@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>PizzaTech 🍕</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🍕 Menu des Pizzas</h1>
+
+  <ul id="pizza-list"></ul>
+
+  <h2>Ajouter une pizza</h2>
+  <form id="pizza-form">
+    <input type="text" id="nom" placeholder="Nom" required>
+    <input type="number" id="prix" placeholder="Prix" required>
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <script>
+    const API_URL = 'http://localhost:3000/api/pizzas';
+
+    // Afficher les pizzas
+    function afficherPizzas() {
+      fetch(API_URL)
+        .then(res => res.json())
+        .then(pizzas => {
+          const list = document.getElementById('pizza-list');
+          list.innerHTML = '';
+          pizzas.forEach(pizza => {
+            const item = document.createElement('li');
+            item.textContent = `${pizza.nom} - ${pizza.prix}€`;
+            list.appendChild(item);
+          });
+        });
+    }
+
+    // Ajouter une pizza
+    document.getElementById('pizza-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nom = document.getElementById('nom').value;
+      const prix = parseFloat(document.getElementById('prix').value);
+
+      fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nom, prix })
+      })
+      .then(() => {
+        afficherPizzas();
+        document.getElementById('pizza-form').reset();
+      });
+    });
+
+    // Initialisation
+    afficherPizzas();
+  </script>
+</body>
+</html>
