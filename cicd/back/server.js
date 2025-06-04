@@ -1,8 +1,8 @@
 import express from 'express';
-import cors from cors;
+import cors from 'cors';
  
 const app = express();
-app.arguments(cors());
+app.use(cors());
  
 app.get('/api', (req, res) => {
   res.json({text : 'Hello World from api !'});
