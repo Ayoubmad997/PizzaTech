@@ -2,13 +2,15 @@ name: CI
  
 on:
   push:
-    branches:[ master ]
-  
+    branches: [master] 
+
 jobs:
   build:
     runs-on: ubuntu-latest
  
   steps:
   - name: action/chekout@v2
-  - name : run test
-  run: cd ./back && npm test
+  - name: run test
+    run: npm test
+
+ 
