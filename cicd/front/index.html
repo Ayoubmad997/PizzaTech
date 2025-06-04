@@ -1,14 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pizzeria Bella Napoli</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Hello ???</h1>
-    <button class="btn">API</button>
-</body>
+  <header>
+    <h1>🍕 Pizzeria Bella Napoli</h1>
+    <nav>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<script type="module" src="./app.js"></script>
+  <main>
+    <section id="hero">
+      <h2>Des pizzas artisanales faites avec amour ❤️</h2>
+      <button class="btn" id="apiBtn">Voir les offres API</button>
+    </section>
+
+    <section id="menu">
+      <h2>Notre Menu</h2>
+      <ul class="pizza-list">
+        <li>Margherita - 9€</li>
+        <li>Reine - 11€</li>
+        <li>4 Fromages - 12€</li>
+      </ul>
+    </section>
+
+    <section id="about">
+      <h2>À propos de nous</h2>
+      <p>Nous sommes une pizzeria familiale située au cœur de la ville. Nous utilisons des ingrédients frais et locaux pour chaque pizza.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Bella Napoli. Tous droits réservés.</p>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
 </html>
