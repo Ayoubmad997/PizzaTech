@@ -1,16 +1,14 @@
 name: CI
  
 on:
-push:
-   branches:[ mester ]
-bull_request:
-  branches: [ main]
- 
+  push:
+    branches:[ master ]
+  
 jobs:
   build:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
  
   steps:
   - name: action/chekout@v2
   - name : run test
-    run:npm test
+    run: cd ./back && npm test
