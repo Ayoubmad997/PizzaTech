@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>PizzaTech 🍕</title>
   <link rel="stylesheet" href="style.css">
+  <title>Menu des Pizzas</title>
 </head>
 <body>
   <h1>🍕 Menu des Pizzas</h1>
@@ -12,15 +12,14 @@
 
   <h2>Ajouter une pizza</h2>
   <form id="pizza-form">
-    <input type="text" id="nom" placeholder="Nom" required>
-    <input type="number" id="prix" placeholder="Prix" required>
+    <input type="text" id="nom" placeholder="Nom de la pizza" required>
+    <input type="number" id="prix" placeholder="Prix (€)" required>
     <button type="submit">Ajouter</button>
   </form>
 
   <script>
     const API_URL = 'http://localhost:3000/api/pizzas';
 
-    // Afficher les pizzas
     function afficherPizzas() {
       fetch(API_URL)
         .then(res => res.json())
@@ -32,11 +31,13 @@
             item.textContent = `${pizza.nom} - ${pizza.prix}€`;
             list.appendChild(item);
           });
+        })
+        .catch(err => {
+          console.error('Erreur de chargement des pizzas :', err);
         });
     }
 
-    // Ajouter une pizza
-    document.getElementById('pizza-form').addEventListener('submit', (e) => {
+    document.getElementById('pizza-form').addEventListener('submit', function (e) {
       e.preventDefault();
       const nom = document.getElementById('nom').value;
       const prix = parseFloat(document.getElementById('prix').value);
@@ -49,11 +50,14 @@
       .then(() => {
         afficherPizzas();
         document.getElementById('pizza-form').reset();
+      })
+      .catch(err => {
+        console.error('Erreur d\'ajout de pizza :', err);
       });
     });
 
-    // Initialisation
     afficherPizzas();
   </script>
 </body>
 </html>
+
