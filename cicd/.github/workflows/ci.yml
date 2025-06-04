@@ -11,4 +11,4 @@ jobs:
   steps:
   - name: action/chekout@v2
   - name : run test
-    run: cd ./back && npm test
+  run: cd ./back && npm test
